@@ -1,3 +1,9 @@
+/*
+ * CORE STYLESHEET: ZYPHER INTERFACE DESIGN
+ * This file establishes the dark, unified, and modern aesthetic
+ * for all site pages (Hero, Contact, and Chat).
+ */
+
 /* ======================================= */
 /* 1. Global Variables and Base Styling    */
 /* ======================================= */
@@ -128,7 +134,7 @@ a:hover {
 .main-logo {
     width: 250px;
     height: auto;
-    /* Optional: Subtle animation for dynamics */
+    /* Subtle animation for dynamics */
     animation: pulseGlow 4s infinite alternate; 
 }
 
