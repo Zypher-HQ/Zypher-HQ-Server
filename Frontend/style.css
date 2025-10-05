@@ -1,0 +1,418 @@
+/* ======================================= */
+/* 1. Global Variables and Base Styling    */
+/* ======================================= */
+:root {
+    /* Colors */
+    --bg-dark: #1a1a1a;        /* Deep Charcoal/Black */
+    --bg-charcoal-light: #2c2c2c; /* Lighter background for elements */
+    --red-vibrant: #E30022;    /* Vibrant Red Accent */
+    --text-light: #ffffff;
+    --text-dim: #999999;
+    --bubble-user: #2c2c2c;
+    
+    /* Font */
+    /* Using a fallback for Montserrat, though external link is required */
+    --font-primary: 'Montserrat', sans-serif;
+}
+
+/* Base Styles & Typography */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll from background effects */
+}
+
+a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--red-vibrant);
+}
+
+/* ======================================= */
+/* 2. Universal Components                 */
+/* ======================================= */
+
+/* Sticky Navigation Bar */
+.sticky-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 50px;
+    background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent */
+    display: flex;
+    justify-content: center; /* Center the links */
+}
+
+.nav-links a {
+    margin: 0 15px;
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+    border-bottom: 2px solid var(--red-vibrant);
+    color: var(--text-light); /* Keep text white on hover */
+}
+
+/* Primary CTA Button */
+.cta-button {
+    background-color: var(--red-vibrant);
+    color: var(--text-light) !important;
+    padding: 15px 40px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 10px rgba(227, 0, 34, 0.4);
+}
+
+.cta-button:hover {
+    background-color: #ff334f; /* Slightly lighter red */
+    box-shadow: 0 0 20px rgba(227, 0, 34, 0.7);
+    border-bottom: none; /* Override nav hover style */
+}
+
+/* Footer (Anchoring Trust) */
+.site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-top: 1px solid var(--bg-charcoal-light);
+    z-index: 900;
+}
+
+.site-footer a {
+    text-decoration: underline;
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+/* ======================================= */
+/* 3. Page 1: Main Website / Hero Section  */
+/* ======================================= */
+
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+.main-logo {
+    width: 250px;
+    height: auto;
+    /* Optional: Subtle animation for dynamics */
+    animation: pulseGlow 4s infinite alternate; 
+}
+
+h1.brand-name {
+    font-size: 4em;
+    font-weight: 700;
+    margin: 10px 0;
+    color: var(--text-light);
+}
+
+.slogan {
+    font-size: 1.2em;
+    color: var(--text-dim);
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+}
+
+/* Background Visual Dynamics - Placeholder for fragmented patterns */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(227, 0, 34, 0.05) 0%, transparent 70%);
+    background-size: 100% 100%;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+@keyframes pulseGlow {
+    from { filter: drop-shadow(0 0 5px rgba(227, 0, 34, 0.5)); }
+    to { filter: drop-shadow(0 0 15px rgba(227, 0, 34, 0.8)); }
+}
+
+
+/* ======================================= */
+/* 4. Page 2: Contact Us Page              */
+/* ======================================= */
+
+.contact-page {
+    max-width: 1200px;
+    margin: 100px auto 100px auto; /* Space for nav and footer */
+    padding: 40px 20px;
+}
+
+.contact-page h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--red-vibrant);
+    padding-left: 15px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+fieldset {
+    border: 1px solid var(--bg-charcoal-light);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+legend {
+    color: var(--text-light);
+    font-weight: bold;
+    padding: 0 10px;
+    text-transform: uppercase;
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: var(--red-vibrant);
+}
+
+/* Conditional Text Field (Hidden by default) */
+#reason-manual-input {
+    display: none;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid var(--red-vibrant);
+    background-color: var(--bg-charcoal-light);
+    color: var(--text-light);
+    border-radius: 4px;
+}
+
+/* Message Area */
+#message {
+    width: 100%;
+    min-height: 200px;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: var(--bg-charcoal-light);
+    color: var(--text-light);
+    border: 1px solid var(--bg-charcoal-light);
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.submit-button {
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 150px;
+    height: 50px;
+    font-size: 1.1em;
+}
+
+/* Info Icon Tooltip */
+.info-icon {
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    cursor: help;
+    color: var(--red-vibrant);
+}
+
+.info-icon .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: var(--bg-charcoal-light);
+    color: var(--text-light);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position above the icon */
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: 1px solid var(--red-vibrant);
+    font-size: 0.8em;
+}
+
+.info-icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ======================================= */
+/* 5. Page 3: Chatting Page                */
+/* ======================================= */
+
+.chat-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 20px 100px 20px; /* Space for fixed elements */
+}
+
+.chat-header {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 40px;
+    border-bottom: 2px solid var(--bg-charcoal-light);
+    padding-bottom: 10px;
+    color: var(--text-light);
+}
+
+.chat-header::before {
+    content: '| ';
+    color: var(--red-vibrant);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.message-area {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+.message {
+    max-width: 70%;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background-color: var(--bubble-user); /* Dark Gray/Black */
+    color: var(--text-light);
+    align-self: flex-end; /* Align right */
+    border-bottom-right-radius: 5px; /* Sharp corner for the user bubble */
+}
+
+.system-message {
+    background-color: var(--red-vibrant);
+    color: var(--text-light);
+    align-self: flex-start; /* Align left */
+    border-bottom-left-radius: 5px; /* Sharp corner for the system bubble */
+    font-style: italic;
+    font-weight: 500;
+}
+
+.message-area p {
+    margin: 5px 0 0 0;
+    font-size: 0.9em;
+}
+
+.message-area .username {
+    font-weight: bold;
+    font-size: 1em;
+    color: var(--text-dim);
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    font-style: italic;
+    color: var(--text-dim);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: none; /* Hide by default, shown by JS */
+}
+
+/* Fixed Input Bar */
+.chat-input-bar {
+    position: fixed;
+    bottom: 55px; /* Above the footer */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    background-color: var(--bg-dark);
+    border-top: 1px solid var(--bg-charcoal-light);
+    z-index: 100;
+}
+
+.input-wrapper {
+    width: 900px;
+    max-width: 95%;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--bg-charcoal-light);
+    border-radius: 50px;
+    padding: 5px;
+    background-color: var(--bg-charcoal-light);
+}
+
+.input-wrapper input {
+    flex-grow: 1;
+    border: none;
+    padding: 10px 20px;
+    background: transparent;
+    color: var(--text-light);
+    font-size: 1em;
+    outline: none;
+}
+
+.send-button-chat {
+    background-color: var(--red-vibrant);
+    color: var(--text-light);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(45deg); /* Rotate for the paper airplane look */
+    transition: background-color 0.2s;
+}
+
+.send-button-chat:hover {
+    background-color: #ff334f;
+}

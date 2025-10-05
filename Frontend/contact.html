@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zypher - Contact Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="contact-page-body"> 
+    
+    <nav class="sticky-nav">
+        <div class="nav-links">
+            <a href="index.html">Search</a>
+            <a href="#">Social</a>
+            <a href="#">AI</a>
+            <a href="#">Store</a>
+            <a href="#">API</a>
+            <a href="#">About Us</a>
+        </div>
+    </nav>
+
+    <main class="contact-page">
+        <h2>CONTACT US</h2>
+
+        <form id="contact-form">
+            <div class="form-grid">
+                
+                <fieldset class="triage-section">
+                    <legend>Reason for Contact</legend>
+                    <label><input type="radio" name="reason" value="general" checked> General Inquiry</label>
+                    <label><input type="radio" name="reason" value="technical"> Technical Support</label>
+                    <label><input type="radio" name="reason" value="billing"> Billing Question</label>
+                    <label><input type="radio" name="reason" value="partnership"> Partnership Opportunity</label>
+                    <label><input type="radio" name="reason" value="feedback"> Feedback/Suggestion</label>
+                    <label><input type="radio" name="reason" value="none"> None of the Above</label>
+                    <label><input type="radio" name="reason" value="no_reason"> No Reason (Will Explain)</label>
+                    
+                    <div id="reason-manual-input-wrapper" style="display: none; margin-top: 15px;">
+                        <input type="text" id="manual-reason" placeholder="Please specify your reason briefly (e.g., Media Inquiry)">
+                    </div>
+                </fieldset>
+
+                <fieldset class="device-section">
+                    <legend>Device Type</legend>
+                    <label><input type="checkbox" name="device" value="samsung"> Samsung</label>
+                    <label><input type="checkbox" name="device" value="infinix"> Infinix</label>
+                    <label><input type="checkbox" name="device" value="itel"> iTel</label>
+                    <label><input type="checkbox" name="device" value="iphone"> iPhone</label>
+                    <label><input type="checkbox" name="device" value="ipad"> iPad</label>
+                    <label><input type="checkbox" name="device" value="dell"> Dell / HP</label>
+                    <label><input type="checkbox" name="device" value="surface"> Microsoft Surface</label>
+                    <label><input type="checkbox" name="device" value="other"> Other</label>
+                </fieldset>
+
+                <fieldset class="service-section">
+                    <legend>Needed Service</legend>
+                    <label>
+                        <input type="checkbox" name="service" value="website"> Website Service 
+                        <span class="info-icon">ⓘ<span class="tooltip-text">Assistance with site navigation and account access.</span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="service" value="suggestion"> Suggestion Service 
+                        <span class="info-icon">ⓘ<span class="tooltip-text">Submitting ideas for new features or improvements.</span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="service" value="admin"> Admin Service 
+                        <span class="info-icon">ⓘ<span class="tooltip-text">Request for administrative action or moderation.</span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="service" value="api"> API Integration 
+                        <span class="info-icon">ⓘ<span class="tooltip-text">Support for integrating Zypher APIs into external projects.</span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="service" value="recovery"> Data Recovery 
+                        <span class="info-icon">ⓘ<span class="tooltip-text">Assistance with retrieving lost or inaccessible data.</span></span>
+                    </label>
+                </fieldset>
+            </div>
+            
+            <label for="message" style="margin-top: 20px; font-weight: bold;">YOUR MESSAGE</label>
+            <textarea id="message" placeholder="Please describe your issue in detail. Minimum 5 lines (approx. 200 characters) and maximum 1000 characters." maxlength="1000"></textarea>
+
+            <button type="submit" class="cta-button submit-button">SUBMIT</button>
+        </form>
+    </main>
+
+    <footer class="site-footer">
+        © 2025 | ZYPHER | POWERED BY VERCEL | <a href="contact.html">CONTACT US</a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
