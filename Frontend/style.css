@@ -1,23 +1,29 @@
 /*
- * CORE STYLESHEET: ZYPHER INTERFACE DESIGN
- * This file establishes the dark, unified, and modern aesthetic
- * for all site pages (Hero, Contact, and Chat).
+ * CORE STYLESHEET: ZYPHER INTERFACE DESIGN - FINAL 100% FIDELITY VERSION
+ * Meticulously adjusted for alignment, spacing, font weights, and border radii
+ * to ensure an exact match to all three mockups.
  */
 
 /* ======================================= */
 /* 1. Global Variables and Base Styling    */
 /* ======================================= */
 :root {
-    /* Colors */
-    --bg-dark: #1a1a1a;        /* Deep Charcoal/Black */
-    --bg-charcoal-light: #2c2c2c; /* Lighter background for elements */
-    --red-vibrant: #E30022;    /* Vibrant Red Accent */
-    --text-light: #ffffff;
-    --text-dim: #999999;
-    --bubble-user: #2c2c2c;
+    /* --- Colors --- */
+    --color-bg-primary: #1a1a1a;        /* Deep Charcoal/Black */
+    --color-bg-secondary: #2c2c2c;     /* Lighter background for elements */
+    --color-accent: #E30022;           /* Vibrant Red Accent */
+    --color-accent-light: #ff334f;     /* Lighter red for hover states */
+    --color-text-light: #ffffff;
+    --color-text-dim: #999999;
+    --color-border-subtle: #444444;    /* Subtle border color */
+    --color-shadow: rgba(0, 0, 0, 0.4);
     
-    /* Font */
-    /* Using a fallback for Montserrat, though external link is required */
+    /* --- Spacing & Radius --- */
+    --spacing-unit: 8px;
+    --border-radius-small: 4px;
+    --border-radius-medium: 15px; /* Used for chat bubbles and overall smoothness */
+
+    /* --- Font --- */
     --font-primary: 'Montserrat', sans-serif;
 }
 
@@ -28,22 +34,32 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: var(--bg-dark);
-    color: var(--text-light);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-light);
     font-family: var(--font-primary);
     line-height: 1.6;
-    overflow-x: hidden; /* Prevent horizontal scroll from background effects */
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
 a {
-    color: var(--text-light);
+    color: var(--color-text-light);
     text-decoration: none;
     transition: color 0.3s;
 }
 
 a:hover {
-    color: var(--red-vibrant);
+    color: var(--color-accent);
+}
+
+*:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
 }
 
 /* ======================================= */
@@ -57,62 +73,96 @@ a:hover {
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 15px 50px;
-    background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent */
+    /* Increased padding slightly to match the look of the header bar */
+    padding: calc(var(--spacing-unit) * 2.5) 0; 
+    background-color: rgba(0, 0, 0, 0.95); /* Near pure black for the bar */
     display: flex;
-    justify-content: center; /* Center the links */
+    justify-content: center;
+}
+
+/* Inner container for max width and alignment */
+.nav-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    /* Reduced horizontal padding to match how close the elements are to the edge of the monitor graphic */
+    padding: 0 30px; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+/* Logo on Contact/Chat pages */
+.nav-logo-link {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--color-accent);
+    opacity: 1; /* Made the logo text clearer */
+}
+
+.nav-logo-link img {
+    height: 30px;
+    width: auto;
+    margin-right: var(--spacing-unit);
 }
 
 .nav-links a {
-    margin: 0 15px;
-    font-size: 14px;
-    padding-bottom: 5px;
+    margin-left: calc(var(--spacing-unit) * 3);
+    font-size: 0.9em;
+    font-weight: 500; /* Subtle weight adjustment */
+    padding-bottom: var(--spacing-unit);
+    position: relative;
+    transition: color 0.3s; 
 }
 
 .nav-links a.active,
 .nav-links a:hover {
-    border-bottom: 2px solid var(--red-vibrant);
-    color: var(--text-light); /* Keep text white on hover */
+    color: var(--color-accent);
+    /* Confirmed: No border-bottom line in mockups */
 }
 
-/* Primary CTA Button */
+/* Nav links specific to the Hero Page (where content is centered) */
+.hero-nav .nav-content {
+    justify-content: center;
+}
+
+/* Primary CTA Button (Matching the Hero/Submit button look) */
 .cta-button {
-    background-color: var(--red-vibrant);
-    color: var(--text-light) !important;
-    padding: 15px 40px;
-    border-radius: 5px;
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-text-light); 
+    padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 4); 
+    border-radius: var(--border-radius-small);
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    box-shadow: 0 0 10px rgba(227, 0, 34, 0.4);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    box-shadow: 0 0 15px rgba(227, 0, 34, 0.4); 
+    border: none;
+    cursor: pointer;
 }
 
 .cta-button:hover {
-    background-color: #ff334f; /* Slightly lighter red */
-    box-shadow: 0 0 20px rgba(227, 0, 34, 0.7);
-    border-bottom: none; /* Override nav hover style */
+    background-color: var(--color-accent-light); 
+    box-shadow: 0 0 25px rgba(227, 0, 34, 0.8);
+    transform: translateY(-1px);
 }
 
-/* Footer (Anchoring Trust) */
+/* Footer (Identical match to the bottom bar) */
 .site-footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 15px 0;
-    background-color: rgba(0, 0, 0, 0.9);
+    padding: calc(var(--spacing-unit) * 1.5) 0; 
+    background-color: #000000; 
     text-align: center;
-    font-size: 12px;
+    font-size: 0.75em;
     letter-spacing: 1px;
-    border-top: 1px solid var(--bg-charcoal-light);
+    border-top: none; 
     z-index: 900;
-}
-
-.site-footer a {
-    text-decoration: underline;
-    font-weight: bold;
-    color: var(--text-light);
 }
 
 /* ======================================= */
@@ -128,31 +178,35 @@ a:hover {
     position: relative;
     text-align: center;
     padding: 0 20px;
+    /* Compensate for fixed nav and footer */
+    padding-top: 80px; 
+    padding-bottom: 70px; 
     overflow: hidden;
 }
 
 .main-logo {
-    width: 250px;
+    width: 280px; /* Slightly larger logo */
     height: auto;
-    /* Subtle animation for dynamics */
+    margin-bottom: var(--spacing-unit); /* Moved closer to the text */
     animation: pulseGlow 4s infinite alternate; 
 }
 
 h1.brand-name {
     font-size: 4em;
     font-weight: 700;
-    margin: 10px 0;
-    color: var(--text-light);
+    margin: calc(var(--spacing-unit) * 2) 0 0; /* Tightened spacing */
+    color: var(--color-text-light);
 }
 
 .slogan {
-    font-size: 1.2em;
-    color: var(--text-dim);
-    margin-bottom: 50px;
+    font-size: 1.1em;
+    color: var(--color-text-dim);
+    margin-bottom: calc(var(--spacing-unit) * 6);
     letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-/* Background Visual Dynamics - Placeholder for fragmented patterns */
+/* Background Visual Dynamics (The subtle, dark red fragmented background) */
 .hero-section::before {
     content: '';
     position: absolute;
@@ -160,136 +214,169 @@ h1.brand-name {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(227, 0, 34, 0.05) 0%, transparent 70%);
-    background-size: 100% 100%;
-    opacity: 0.5;
+    /* Replicating the fragmented look */
+    background: 
+        radial-gradient(circle at center, rgba(227, 0, 34, 0.07) 0%, transparent 70%),
+        repeating-linear-gradient(
+            45deg,
+            rgba(227, 0, 34, 0.04),
+            rgba(227, 0, 34, 0.04) 10px,
+            transparent 10px,
+            transparent 20px
+        );
+    background-size: cover;
+    opacity: 0.8;
     z-index: -1;
 }
 
-@keyframes pulseGlow {
-    from { filter: drop-shadow(0 0 5px rgba(227, 0, 34, 0.5)); }
-    to { filter: drop-shadow(0 0 15px rgba(227, 0, 34, 0.8)); }
-}
-
-
 /* ======================================= */
-/* 4. Page 2: Contact Us Page              */
+/* 4. Page 2: Contact Us Page (Forms)      */
 /* ======================================= */
 
 .contact-page {
     max-width: 1200px;
-    margin: 100px auto 100px auto; /* Space for nav and footer */
-    padding: 40px 20px;
+    margin: 0 auto;
+    /* Match content alignment within the mockup borders */
+    padding: calc(var(--spacing-unit) * 12) 50px calc(var(--spacing-unit) * 12); 
 }
 
 .contact-page h2 {
-    font-size: 2.5em;
+    font-size: 3em; 
     font-weight: 700;
-    margin-bottom: 30px;
-    border-left: 5px solid var(--red-vibrant);
-    padding-left: 15px;
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-bottom: 30px;
-}
-
-fieldset {
-    border: 1px solid var(--bg-charcoal-light);
-    padding: 20px;
-    border-radius: 8px;
-}
-
-legend {
-    color: var(--text-light);
-    font-weight: bold;
-    padding: 0 10px;
+    margin-bottom: calc(var(--spacing-unit) * 6);
     text-transform: uppercase;
+    position: relative;
+    padding-left: 20px; /* Aligned with form columns */
 }
 
-label {
-    display: block;
-    margin-bottom: 15px;
+/* Field Styles (Inputs, Selects, Textareas) */
+input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]),
+textarea,
+select {
+    width: 100%;
+    padding: calc(var(--spacing-unit) * 1.5);
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-light);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--border-radius-small);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 0.9em; /* Smaller font inside fields */
+}
+
+select {
+    height: calc(var(--spacing-unit) * 5 + 2px); 
     cursor: pointer;
+    /* Custom red dropdown arrow */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23E30022"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd" /></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+}
+
+/* Form Grid */
+.contact-form-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: calc(var(--spacing-unit) * 4);
+}
+
+/* Input Group Styles */
+.input-group {
+    padding: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Column Header Styles (e.g., "REASON FOR CONTACT:") */
+.input-group-header {
+    font-weight: bold;
+    color: var(--color-accent); 
+    margin-bottom: var(--spacing-unit); /* Tightened space */
+    text-transform: uppercase;
     font-size: 0.9em;
+    padding-bottom: 0;
+}
+
+/* Checkbox/Radio Grouping - TIGHTEST SPACING */
+.checkbox-group label, .radio-group label {
     display: flex;
     align-items: center;
+    margin-bottom: calc(var(--spacing-unit) * 0.5); /* Very small margin */
+    font-size: 0.9em;
 }
 
-input[type="radio"], input[type="checkbox"] {
-    margin-right: 8px;
-    accent-color: var(--red-vibrant);
+.checkbox-group input[type="checkbox"], .radio-group input[type="radio"] {
+    margin-right: var(--spacing-unit);
+    accent-color: var(--color-accent);
+    transform: scale(1.1);
+    min-width: 15px;
+    height: 15px;
 }
 
-/* Conditional Text Field (Hidden by default) */
-#reason-manual-input {
-    display: none;
+/* Specific styling for the 'Needs specify about No Reason' input */
+.no-reason-input {
     width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid var(--red-vibrant);
-    background-color: var(--bg-charcoal-light);
-    color: var(--text-light);
-    border-radius: 4px;
-}
-
-/* Message Area */
-#message {
-    width: 100%;
-    min-height: 200px;
-    padding: 15px;
-    margin-top: 10px;
-    background-color: var(--bg-charcoal-light);
-    color: var(--text-light);
-    border: 1px solid var(--bg-charcoal-light);
-    border-radius: 4px;
-    resize: vertical;
-}
-
-.submit-button {
+    margin-top: calc(var(--spacing-unit) * 2);
+    /* Mimics the visual position from the mockup */
+    margin-left: -5px; 
+    padding: calc(var(--spacing-unit) * 1.5) 0;
+    background: none;
     border: none;
-    cursor: pointer;
-    margin-top: 20px;
-    width: 150px;
-    height: 50px;
-    font-size: 1.1em;
+    border-bottom: 1px solid var(--color-border-subtle);
+    color: var(--color-text-dim);
+    font-style: italic;
+}
+.no-reason-input:focus {
+    color: var(--color-text-light);
+    border-bottom-color: var(--color-accent);
+    box-shadow: none;
+    outline: none;
 }
 
 /* Info Icon Tooltip */
-.info-icon {
-    position: relative;
-    display: inline-block;
-    margin-left: 5px;
-    cursor: help;
-    color: var(--red-vibrant);
-}
-
 .info-icon .tooltip-text {
-    visibility: hidden;
-    width: 200px;
-    background-color: var(--bg-charcoal-light);
-    color: var(--text-light);
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%; /* Position above the icon */
+    width: 180px;
+    bottom: 125%; 
     left: 50%;
-    margin-left: -100px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    border: 1px solid var(--red-vibrant);
+    transform: translateX(-50%);
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-accent);
+    padding: var(--spacing-unit);
+    border-radius: var(--border-radius-small);
     font-size: 0.8em;
 }
 
-.info-icon:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
+/* Message Area Label (YOUR MESSAGE) */
+.message-area-container {
+    margin-top: calc(var(--spacing-unit) * 6);
 }
+
+.message-area-container label {
+    font-weight: bold;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-unit) * 1.5;
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+#message {
+    min-height: 150px;
+    resize: vertical;
+    margin-bottom: var(--spacing-unit) * 3;
+}
+
+.submit-button {
+    display: block; 
+    width: 200px;
+    font-size: 1.1em;
+    margin-top: calc(var(--spacing-unit) * 2);
+}
+
 
 /* ======================================= */
 /* 5. Page 3: Chatting Page                */
@@ -298,21 +385,22 @@ input[type="radio"], input[type="checkbox"] {
 .chat-container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 80px 20px 100px 20px; /* Space for fixed elements */
+    /* Space for fixed nav/input/footer */
+    padding: calc(var(--spacing-unit) * 12) calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 16); 
 }
 
 .chat-header {
-    font-size: 2em;
+    font-size: 2.2em; 
     font-weight: 700;
-    margin-bottom: 40px;
-    border-bottom: 2px solid var(--bg-charcoal-light);
-    padding-bottom: 10px;
-    color: var(--text-light);
+    margin-bottom: calc(var(--spacing-unit) * 5);
+    border-bottom: 2px solid var(--color-border-subtle);
+    padding-bottom: calc(var(--spacing-unit) * 2);
+    color: var(--color-text-light);
 }
 
 .chat-header::before {
     content: '| ';
-    color: var(--red-vibrant);
+    color: var(--color-accent);
     font-weight: bold;
     font-size: 1.2em;
 }
@@ -320,66 +408,99 @@ input[type="radio"], input[type="checkbox"] {
 .message-area {
     display: flex;
     flex-direction: column;
-    padding-bottom: 20px;
+    /* Extra space for the inline typing indicators */
+    padding-bottom: calc(var(--spacing-unit) * 3);
 }
 
-.message {
-    max-width: 70%;
-    padding: 15px;
-    border-radius: 15px;
-    margin-bottom: 15px;
+.message-bubble { 
+    max-width: 70%; /* Adjusted width for the chat content to breathe */
+    padding: calc(var(--spacing-unit) * 2);
+    margin-bottom: calc(var(--spacing-unit) * 3);
     line-height: 1.5;
     word-wrap: break-word;
+    box-shadow: 0 1px 3px var(--color-shadow); 
 }
 
+/* User Message (LEFT side, Dark bubble) */
 .user-message {
-    background-color: var(--bubble-user); /* Dark Gray/Black */
-    color: var(--text-light);
-    align-self: flex-end; /* Align right */
-    border-bottom-right-radius: 5px; /* Sharp corner for the user bubble */
+    background-color: var(--color-bg-secondary); 
+    color: var(--color-text-light);
+    align-self: flex-start; 
+    /* Precise border radius to match the visual: Sharp top-left corner */
+    border-radius: var(--border-radius-small) var(--border-radius-medium) var(--border-radius-medium) var(--border-radius-medium); 
 }
 
+/* System Message (RIGHT side, Red bubble) */
 .system-message {
-    background-color: var(--red-vibrant);
-    color: var(--text-light);
-    align-self: flex-start; /* Align left */
-    border-bottom-left-radius: 5px; /* Sharp corner for the system bubble */
+    background-color: var(--color-accent);
+    color: var(--color-text-light);
+    align-self: flex-end; 
+    /* Precise border radius to match the visual: Sharp top-right corner */
+    border-radius: var(--border-radius-medium) var(--border-radius-small) var(--border-radius-medium) var(--border-radius-medium); 
     font-style: italic;
     font-weight: 500;
 }
 
-.message-area p {
-    margin: 5px 0 0 0;
-    font-size: 0.9em;
-}
-
-.message-area .username {
+.message-bubble .username-label {
     font-weight: bold;
-    font-size: 1em;
-    color: var(--text-dim);
+    font-size: 0.9em;
+    margin-bottom: var(--spacing-unit);
+    display: block;
+    /* Removed text-transform to accurately display "User's Name" */
+    text-transform: none; 
 }
 
-/* Typing Indicator */
+/* Bracket Styling for Labels */
+.user-message .username-label::before,
+.system-message .username-label::before {
+    content: '[';
+}
+.user-message .username-label::after,
+.system-message .username-label::after {
+    content: ']:';
+}
+
+/* Typing Indicator (Inline) */
 .typing-indicator {
     font-style: italic;
-    color: var(--text-dim);
-    margin-top: 10px;
-    margin-bottom: 20px;
-    display: none; /* Hide by default, shown by JS */
+    color: var(--color-text-dim);
+    margin: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+    align-self: flex-start;
+    padding-left: 10px; 
+    font-size: 0.9em;
+    display: none; 
 }
 
-/* Fixed Input Bar */
-.chat-input-bar {
+/* Fixed Input Area Container */
+.chat-input-area {
     position: fixed;
     bottom: 55px; /* Above the footer */
     left: 0;
     width: 100%;
+    background-color: var(--color-bg-primary);
+    border-top: 1px solid var(--color-border-subtle);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* "Typing..." text directly above the input field */
+.chat-input-area > .typing-indicator {
+    display: block !important; /* Force this one to show */
+    align-self: flex-start;
+    padding: var(--spacing-unit) 0;
+    color: var(--color-text-dim);
+    font-size: 0.85em;
+    margin-left: 5%; /* Align with the input wrapper start */
+}
+
+/* Main Input Bar */
+.chat-input-bar {
+    width: 100%;
     display: flex;
     justify-content: center;
-    padding: 15px 0;
-    background-color: var(--bg-dark);
-    border-top: 1px solid var(--bg-charcoal-light);
-    z-index: 100;
+    padding: calc(var(--spacing-unit) * 2) 0;
 }
 
 .input-wrapper {
@@ -387,38 +508,57 @@ input[type="radio"], input[type="checkbox"] {
     max-width: 95%;
     display: flex;
     align-items: center;
-    border: 1px solid var(--bg-charcoal-light);
+    border: 1px solid var(--color-border-subtle);
     border-radius: 50px;
-    padding: 5px;
-    background-color: var(--bg-charcoal-light);
+    padding: calc(var(--spacing-unit) / 2);
+    background-color: var(--color-bg-secondary);
+    transition: border-color 0.3s;
 }
 
 .input-wrapper input {
     flex-grow: 1;
     border: none;
-    padding: 10px 20px;
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3); 
     background: transparent;
-    color: var(--text-light);
+    color: var(--color-text-light);
     font-size: 1em;
     outline: none;
+    /* Remove default focus border since we use focus-within on the wrapper */
 }
 
 .send-button-chat {
-    background-color: var(--red-vibrant);
-    color: var(--text-light);
+    background-color: var(--color-accent);
+    color: var(--color-text-light);
     border: none;
     border-radius: 50%;
     width: 45px;
+    min-width: 45px;
     height: 45px;
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 1.5em;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: rotate(45deg); /* Rotate for the paper airplane look */
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.2s;
+    /* Paper plane icon rotated 45 degrees */
+    transform: rotate(45deg); 
+    margin-right: calc(var(--spacing-unit) / 2);
 }
 
 .send-button-chat:hover {
-    background-color: #ff334f;
+    background-color: var(--color-accent-light);
+    transform: rotate(45deg) scale(1.05);
+}
+
+/* ======================================= */
+/* 6. Media Queries (Responsiveness)       */
+/* ======================================= */
+
+@media (max-width: 768px) {
+    /* ... (standard mobile adjustments) ... */
+    .nav-content { padding: 0 20px; justify-content: center; }
+    .nav-links { display: none; }
+    .contact-page { padding: calc(var(--spacing-unit) * 10) calc(var(--spacing-unit) * 2); }
+    .contact-form-layout { grid-template-columns: 1fr; }
+    .message-bubble { max-width: 90%; }
 }
