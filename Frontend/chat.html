@@ -3,47 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zypher - Admin Service Chat</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>Zypher Live Chat | Admin Service</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
+    
+    <meta name="description" content="Live chat support with the Zypher Admin Service.">
 </head>
-<body class="chat-page-body">
+<body>
     
     <nav class="sticky-nav">
-        <div class="nav-links">
-            <a href="index.html">Search</a>
-            <a href="#">Social</a>
-            <a href="#">AI</a>
-            <a href="#">Store</a>
-            <a href="#">API</a>
-            <a href="#">About Us</a>
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo-link">
+                <img src="assets/logo.png" alt="Zypher Logo" style="height:20px; width:auto;"> 
+                Zypher
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#">Search</a>
+                <a href="#">Social</a>
+                <a href="#" class="active">AI</a>
+            </div>
         </div>
     </nav>
 
-    <div class="chat-container">
-        <header class="chat-header">Admin Service</header>
+    <main class="chat-container">
+        <h2 class="chat-header">Admin Service</h2>
 
-        <div class="message-area">
+        <div class="message-area" id="chatWindow">
+            
+            <div class="message-bubble system-message">
+                <span class="username-label">System Bot</span>
+                <p class="message-content">Welcome to Admin Service. You now in our queue and will connected to a human administrator shortly. Thank you for your patience.</p>
             </div>
-        
-        <div class="typing-indicator" style="display: block;">
-            Admin is connecting...
-        </div>
-    </div>
+            
+            <div class="message-bubble user-message">
+                <span class="username-label">User's Name</span>
+                <p class="message-content">The website service isn't loading correctly on my phone. I have issue with your search function, it keeps returning empty results when I look for 'integration protocols'.</p>
+            </div>
+            
+            <p class="typing-indicator" style="display: block;">Typing...</p>
 
-    <div class="chat-input-bar">
-        <div class="input-wrapper">
-            <input type="text" id="chat-input" placeholder="Type your message here...">
-            <button class="send-button-chat">
-                &#x2708;
-            </button>
+            <div class="message-bubble system-message">
+                <span class="username-label">System Bot</span>
+                <p class="message-content">We apologize for the inconvenience. To expedite your support, please confirm the following: What is your device model and the browser version you are currently using?</p>
+            </div>
+            
+            <div class="message-bubble user-message">
+                <span class="username-label">User's Name</span>
+                <p class="message-content">My device is a Samsung Galaxy S22 running Chrome version 105. I cleared my cache but the issue persists.</p>
+            </div>
+            
+            <div class="message-bubble system-message">
+                <span class="username-label">System Bot</span>
+                <p class="message-content">Understood. Your information has been logged. We are currently searching for an available agent specializing in Android-based search issues.</p>
+            </div>
+
+            <p class="typing-indicator" style="display: block; font-weight: bold;">[Agent Connected]: Admin is typing...</p>
+            
+        </div>
+    </main>
+    
+    <div class="chat-input-area">
+        <p class="typing-indicator" id="inputTypingIndicator">Typing...</p>
+
+        <div class="chat-input-bar">
+            <div class="input-wrapper">
+                <input type="text" id="chatInput" placeholder="Typing..." aria-label="Chat message input field">
+                
+                <button class="send-button-chat" aria-label="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
         </div>
     </div>
 
     <footer class="site-footer">
-        © 2025 | ZYPHER | POWERED BY VERCEL | <a href="contact.html">CONTACT US</a>
+        <span>2025 | ZYPHER | POWERED BY VERCEL | L | </span>
+        <a href="contact.html">CONTACT US</a>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="chat.js"></script>
 </body>
 </html>
